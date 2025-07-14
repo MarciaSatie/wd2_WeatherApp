@@ -14,9 +14,11 @@ export const stationController = {
     async addReport(request, response) {
     const station = await stationStore.getStationById(request.params.id);
     const newReport = {
-      title: request.body.title,
-      artist: request.body.artist,
-      duration: Number(request.body.duration),
+      code: request.body.code,
+      temperature: request.body.temperature,
+      windSpeed: Number(request.body.windSpeed),
+      windDirection: request.body.windDirection,
+      pressure: Number(request.body.pressure),
     };
     console.log(`adding report ${newReport.title}`);
     await reportStore.addReport(station._id, newReport);
