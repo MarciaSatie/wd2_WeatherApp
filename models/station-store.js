@@ -2,14 +2,18 @@ import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
 
 const db = initStore("stations");
+console.log("Station store initialized");
 
 export const stationStore = {
-  async getAllstations() {
+  async getAllStations() {
+    console.log("Fetching all stations");
     await db.read();
+    db.data.stations ||= []; // Ensure stations array is initialized
+    console.log(`Found ${db.data.stations.length} stations`);
     return db.data.stations;
   },
 
-  async addstation(station) {
+  async addStation(station) {
     await db.read();
     station._id = v4();
     db.data.stations.push(station);
@@ -17,20 +21,20 @@ export const stationStore = {
     return station;
   },
 
-  async getstationById(id) {
+  async getStationById(id) {
     await db.read();
     const list = db.data.stations.find((station) => station._id === id);
     return list;
   },
 
-  async deletestationById(id) {
+  async deleteStationById(id) {
     await db.read();
     const index = db.data.stations.findIndex((station) => station._id === id);
     db.data.stations.splice(index, 1);
     await db.write();
   },
 
-  async deleteAllstations() {
+  async deleteAllStations() {
     db.data.stations = [];
     await db.write();
   },
