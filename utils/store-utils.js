@@ -14,3 +14,4 @@ export function initStore(dataType) {
   return db;
 }
 
+

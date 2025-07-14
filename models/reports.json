@@ -61,6 +61,15 @@
       "pressure": 44,
       "_id": "576c1aaa-9ee6-41f1-93b1-76f417aeae3f",
       "stationid": "6c6dc60e-6d05-41d9-8a97-f24092d4a4ab"
+    },
+    {
+      "code": "124",
+      "temperature": "23",
+      "windSpeed": 41,
+      "windDirection": "north",
+      "pressure": 29,
+      "_id": "85eca53c-84f5-40ff-b9e2-180d9e12f0c3",
+      "stationid": "fc78e549-5569-44bb-a32b-552ec3df2b62"
     }
   ]
 }

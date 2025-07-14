@@ -22,3 +22,4 @@ export const dashboardController = {
     response.redirect("/dashboard");
   },
 };
+
