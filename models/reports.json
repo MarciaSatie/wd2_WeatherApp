@@ -1,0 +1,26 @@
+{
+  "file": "./models/reports.json",
+  "reports": [
+    {
+      "title": "da",
+      "artist": "da",
+      "duration": null,
+      "_id": "2b5705fd-79b5-4136-9c55-bd9f0dc1be87",
+      "stationid": "6c6dc60e-6d05-41d9-8a97-f24092d4a4ab"
+    },
+    {
+      "title": "da",
+      "artist": "d",
+      "duration": null,
+      "_id": "56fb8aff-f03b-4053-a604-c1d18f2eea12",
+      "stationid": "6c6dc60e-6d05-41d9-8a97-f24092d4a4ab"
+    },
+    {
+      "title": "faf",
+      "artist": "fe",
+      "duration": null,
+      "_id": "cbc3982f-26d1-488e-8d22-0debf5b007ae",
+      "stationid": "6c6dc60e-6d05-41d9-8a97-f24092d4a4ab"
+    }
+  ]
+}

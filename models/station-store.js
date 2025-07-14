@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
+import { reportStore } from "./Report-store.js";
 
 const db = initStore("stations");
 console.log("Station store initialized");
@@ -24,6 +25,13 @@ export const stationStore = {
   async getStationById(id) {
     await db.read();
     const list = db.data.stations.find((station) => station._id === id);
+    try {
+      list.reports = await reportStore.getReportsByStationId(id);
+      console.log(`Found reports with id ${JSON.stringify(list.reports)}`);
+    
+    } catch (error) {
+      console.log(`Add Report to View Error: ${error}`);
+    }
     return list;
   },
 

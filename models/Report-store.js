@@ -1,49 +1,49 @@
 import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
 
-const db = initStore("Reports");
+const db = initStore("reports");
 
-export const ReportStore = {
+export const reportStore = {
   async getAllReports() {
     await db.read();
-    return db.data.Reports;
+    return db.data.reports;
   },
 
-  async addReport(stationId, Report) {
+  async addReport(stationId, report) {
     await db.read();
-    Report._id = v4();
-    Report.stationid = stationId;
-    db.data.Reports.push(Report);
+    report._id = v4();
+    report.stationid = stationId;
+    db.data.reports.push(report);
     await db.write();
-    return Report;
+    return report;
   },
 
-  async getReportsBystationId(id) {
+  async getReportsByStationId(id) {
     await db.read();
-    return db.data.Reports.filter((Report) => Report.stationid === id);
+    return db.data.reports.filter((report) => report.stationid === id);
   },
 
   async getReportById(id) {
     await db.read();
-    return db.data.Reports.find((Report) => Report._id === id);
+    return db.data.reports.find((report) => report._id === id);
   },
 
   async deleteReport(id) {
     await db.read();
-    const index = db.data.Reports.findIndex((Report) => Report._id === id);
-    db.data.Reports.splice(index, 1);
+    const index = db.data.reports.findIndex((report) => report._id === id);
+    db.data.reports.splice(index, 1);
     await db.write();
   },
 
   async deleteAllReports() {
-    db.data.Reports = [];
+    db.data.reports = [];
     await db.write();
   },
 
-  async updateReport(Report, updatedReport) {
-    Report.title = updatedReport.title;
-    Report.artist = updatedReport.artist;
-    Report.duration = updatedReport.duration;
+  async updatereport(report, updatedReport) {
+    report.title = updatedReport.title;
+    report.artist = updatedReport.artist;
+    report.duration = updatedReport.duration;
     await db.write();
   },
 };

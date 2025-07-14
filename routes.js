@@ -12,3 +12,6 @@ router.get("/about", aboutController.index);
 router.get("/weatherTop", weatherTopController.index);
 router.post("/dashboard/addStation", dashboardController.addStation);
 router.get("/station/:id", stationController.index);
+router.post("/station/:id/addReport", stationController.addReport);
+
+
