@@ -1,0 +1,17 @@
+{
+  "file": "./models/stations.json",
+  "stations": [
+    {
+      "title": "save us",
+      "_id": "6c6dc60e-6d05-41d9-8a97-f24092d4a4ab"
+    },
+    {
+      "title": "nnn",
+      "_id": "fc78e549-5569-44bb-a32b-552ec3df2b62"
+    }
+  ]
+}
+
+
+
+

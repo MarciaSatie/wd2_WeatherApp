@@ -1,0 +1,29 @@
+<nav class="navbar mb-6">
+  <div class="navbar-brand">
+    <!-- Weather Top BTN -->
+    <a id="weatherTop"
+       class="button has-text-info is-medium has-text-weight-bold"
+       href="/weatherTop">
+      Weather Top
+    </a>
+  </div>
+
+  <div class="navbar-menu" id="navMenu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <!-- Dashboard back to normal button -->
+          <a id="dashboard" class="button" href="/dashboard">Dashboard</a>
+          <a id="about" class="button" href="/about">About</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  /* adds Bulma's "is-primary" to whichever link id the template sets as {{active}} */
+  const activeId = "{{active}}";
+  const el = document.getElementById(activeId);
+  if (el) el.classList.add("is-primary");
+</script>
