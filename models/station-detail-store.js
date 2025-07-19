@@ -64,6 +64,55 @@ export const stationDetailStore = {
         return max;
     },
 
+    async minWind(stationId) {
+        await db.read();
+        db.data.reports ||= [];
+
+        // Filter reports for the specific station
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+
+        const reportList = stationReports
+            .map(report => parseFloat(report.windSpeed))
+            .filter(reportList => !isNaN(reportList));
+
+        const min = reportList.length > 0 ? Math.min(...reportList) : null;
+
+        console.log(`Min Wind Direction for station ${stationId}: ${min}`);
+        return min;
+    },
+    async maxPressure(stationId) {
+        await db.read();
+        db.data.reports ||= [];
+
+        // Filter reports for the specific station
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+
+        const reportList = stationReports
+            .map(report => parseFloat(report.pressure))
+            .filter(reportList => !isNaN(reportList));
+
+        const max = reportList.length > 0 ? Math.max(...reportList) : null;
+
+        console.log(`Max Pressure for station ${stationId}: ${max}`);
+        return max;
+    },    
+    async minPressure(stationId) {
+        await db.read();
+        db.data.reports ||= [];
+
+        // Filter reports for the specific station
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+
+        const reportList = stationReports
+            .map(report => parseFloat(report.pressure))
+            .filter(reportList => !isNaN(reportList));
+
+        const min = reportList.length > 0 ? Math.min(...reportList) : null;
+
+        console.log(`Min Pressure for station ${stationId}: ${min}`);
+        return min;
+    }
+
 
 }
 

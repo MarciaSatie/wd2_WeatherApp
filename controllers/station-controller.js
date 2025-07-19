@@ -9,6 +9,9 @@ export const stationController = {
     const maxTemperature = await stationDetailStore.maxTemp(station._id);
     const minTemperature = await stationDetailStore.minTemp(station._id);
     const maxWind = await stationDetailStore.maxWind(station._id);
+    const minWind = await stationDetailStore.minWind(station._id);
+    const maxPressure = await stationDetailStore.maxPressure(station._id);
+    const minPressure = await stationDetailStore.minPressure(station._id);
     
     const viewData = {
       title: "station",
@@ -17,6 +20,9 @@ export const stationController = {
       maxTemperature: maxTemperature?.toFixed(1),
       minTemperature: minTemperature?.toFixed(1),
       maxWind: maxWind?.toFixed(1),
+      minWind: minWind?.toFixed(1),
+      maxPressure: maxPressure?.toFixed(1),
+      minPressure: minPressure?.toFixed(1),
     };  
     response.render("station-view", viewData);
     },
