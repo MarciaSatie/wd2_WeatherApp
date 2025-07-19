@@ -30,7 +30,15 @@
         <td>
          {{pressure}}            
         </td> 
+        <td>
+          <form action="/station/{{_id}}/deleteReport/{{_id}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this Report?');">
+            <button type="submit" style="background:none; border:none; padding:0;">
+              <img src="/images/bin.png" alt="Delete {{title}}" class="bin" style="width: 30px; cursor: pointer;">
+            </button>
+          </form> 
+        </td>
     </tr>
+
     {{/each}}
   </tbody>
 </table>

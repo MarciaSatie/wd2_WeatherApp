@@ -14,6 +14,7 @@ export const dashboardController = {
   },
 
   async addStation(request, response) {
+    
     const newStation = {
       title: request.body.title,
       latitude: request.body.latitude,
@@ -24,6 +25,12 @@ export const dashboardController = {
     await stationStore.addStation(newStation);
     console.log("Station added successfully");
 
+    response.redirect("/dashboard");
+  },
+
+  async deleteStation(request, response) {
+    console.log(`Deleting station with ID: ${request.params.id}`);
+    await stationStore.deleteStationById(request.params.id);
     response.redirect("/dashboard");
   },
 };

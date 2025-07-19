@@ -39,7 +39,14 @@ export const stationController = {
     console.log(`adding report ${newReport.title} to station ${station._id}`);
     await reportStore.addReport(station._id, newReport);
     response.redirect("/station/" + station._id);
-  }
+  },
+
+  async deleteReport(request, response) {
+    const reportId = request.params.reportId;
+    const report = await reportStore.getReportById(reportId);
+    await reportStore.deleteReport(reportId);
+    response.redirect("/station/" + report.stationId);
+  },
 
   
 

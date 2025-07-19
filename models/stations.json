@@ -2,11 +2,10 @@
   "file": "./models/stations.json",
   "stations": [
     {
-      "title": "station1",
+      "title": "Kilkenny",
       "latitude": "10",
-      "longitude": "12",
-      "_id": "8fe1d605-fe91-4c1f-b2e1-96e1574710cf"
+      "longitude": "15",
+      "_id": "dd5e70d5-19f9-464a-9d1a-55ab47aaa867"
     }
   ]
 }
-
