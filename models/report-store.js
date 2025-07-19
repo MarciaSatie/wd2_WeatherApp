@@ -35,10 +35,24 @@ export const reportStore = {
     await db.write();
   },
 
+  async deleteReportsByStationId(stationId) {
+    await db.read();
+    db.data.reports ||= [];
+    const before = db.data.reports.length;
+    // Filter out all reports that do NOT belong to the given station
+    db.data.reports = db.data.reports.filter(report => report.stationId !== stationId);
+    const after = db.data.reports.length;
+
+    console.log(`Deleted ${before - after} reports for station ${stationId}`);
+    await db.write();
+  },
+
   async deleteAllReports() {
     db.data.reports = [];
     await db.write();
   },
+
+
 
   async updateReport(report, updatedReport) {
     report.code = updatedReport.code;

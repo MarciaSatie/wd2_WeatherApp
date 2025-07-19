@@ -12,21 +12,12 @@
     },
     {
       "code": "300",
-      "temperature": "23",
-      "windSpeed": 24,
-      "windDirection": "south",
-      "pressure": 13,
-      "_id": "6618a7ca-c1ff-4717-a4b2-f80c2e8b23ae",
-      "stationId": "8fe1d605-fe91-4c1f-b2e1-96e1574710cf"
-    },
-    {
-      "code": "200",
-      "temperature": "24",
-      "windSpeed": 15,
+      "temperature": "15",
+      "windSpeed": 13,
       "windDirection": "north",
-      "pressure": 20,
-      "_id": "6238ae1b-b632-4351-8459-9b9885d8c95c",
-      "stationId": "47e5777d-4eab-4c6b-b15a-6f7a609cd018"
+      "pressure": 7,
+      "_id": "4b3c8a95-53db-4d67-b0b6-900fbc9f9f1c",
+      "stationId": "83ba9635-857f-452b-9e14-6a877f6a723a"
     }
   ]
 }

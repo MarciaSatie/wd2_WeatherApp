@@ -3,7 +3,7 @@ import { initStore } from "../utils/store-utils.js";
 import { reportStore } from "./report-store.js";
 
 const db = initStore("stations");
-console.log("Station store initialized");
+const reportsDb = initStore("reports");
 
 export const stationStore = {
   async getAllStations() {
@@ -12,6 +12,11 @@ export const stationStore = {
     db.data.stations ||= []; // Ensure stations array is initialized
     ////console.log(`Found ${db.data.stations.length} stations`);
     return db.data.stations;
+  },
+
+  async getAllStaionsByUserId(userId) {
+    await db.read();  
+    return db.data.stations.filter((station) => station.userId === userId);
   },
 
   async addStation(station) {
@@ -40,6 +45,10 @@ export const stationStore = {
     const index = db.data.stations.findIndex((station) => station._id === id);
     db.data.stations.splice(index, 1);
     await db.write();
+  },
+
+  async deleteReportByStationId(stationId) {
+    await reportStore.deleteReportsByStationId(stationId);
   },
 
   async deleteAllStations() {

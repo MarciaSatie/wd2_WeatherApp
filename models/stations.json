@@ -3,9 +3,28 @@
   "stations": [
     {
       "title": "Kilkenny",
-      "latitude": "10",
+      "latitude": "23",
+      "longitude": "\t34",
+      "_id": "83ba9635-857f-452b-9e14-6a877f6a723a"
+    },
+    {
+      "title": "waterford",
+      "latitude": "13",
       "longitude": "15",
-      "_id": "dd5e70d5-19f9-464a-9d1a-55ab47aaa867"
+      "_id": "16326e28-5c2e-402b-bc21-05c3fba18301"
+    },
+    {
+      "title": "cork",
+      "latitude": "35",
+      "longitude": "67",
+      "_id": "2cc02438-3f58-446b-bcab-66d43e850fcc"
+    },
+    {
+      "title": "melon",
+      "latitude": "5826",
+      "longitude": "24",
+      "userId": "e553ee12-0444-4cfc-9a28-9ee5e51b035f",
+      "_id": "e0e03b06-fd55-4436-9387-81b00707df4f"
     }
   ]
 }
