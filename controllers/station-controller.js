@@ -5,6 +5,7 @@ import { stationDetailStore } from "../models/station-detail-store.js";
 export const stationController = {
   async index(request, response) {      
     const station = await stationStore.getStationById(request.params.id);
+    const reports = await reportStore.getReportsBystationId(station._id);
     const maxTemperature = await stationDetailStore.maxTemp(station._id);
     const minTemperature = await stationDetailStore.minTemp(station._id);
     const maxWind = await stationDetailStore.maxWind(station._id);
@@ -12,6 +13,7 @@ export const stationController = {
     const viewData = {
       title: "station",
       station: station,
+      reports: reports,
       maxTemperature: maxTemperature?.toFixed(1),
       minTemperature: minTemperature?.toFixed(1),
       maxWind: maxWind?.toFixed(1),
