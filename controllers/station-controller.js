@@ -1,12 +1,16 @@
 import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
+import { stationDetailStore } from "../models/station-detail-store.js";
 
 export const stationController = {
   async index(request, response) {      
     const station = await stationStore.getStationById(request.params.id);
+    const maxTemperature = await stationDetailStore.maxTemp();
+    
     const viewData = {
       title: "station",
       station: station,
+      maxTemperature: maxTemperature?.toFixed(1),
     };  
     response.render("station-view", viewData);
     },

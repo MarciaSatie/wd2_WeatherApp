@@ -7,10 +7,10 @@ console.log("Station store initialized");
 
 export const stationStore = {
   async getAllStations() {
-    console.log("Fetching all stations");
+    //console.log("Fetching all stations");
     await db.read();
     db.data.stations ||= []; // Ensure stations array is initialized
-    console.log(`Found ${db.data.stations.length} stations`);
+    ////console.log(`Found ${db.data.stations.length} stations`);
     return db.data.stations;
   },
 
@@ -27,10 +27,10 @@ export const stationStore = {
     const list = db.data.stations.find((station) => station._id === id);
     try {
       list.reports = await reportStore.getReportsByStationId(id);
-      console.log(`Found reports with id ${JSON.stringify(list.reports)}`);
+      //console.log(`Found reports with id ${JSON.stringify(list.reports)}`);
     
     } catch (error) {
-      console.log(`Add Report to View Error: ${error}`);
+      //console.log(`Add Report to View Error: ${error}`);
     }
     return list;
   },

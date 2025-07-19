@@ -70,6 +70,15 @@
       "pressure": 29,
       "_id": "85eca53c-84f5-40ff-b9e2-180d9e12f0c3",
       "stationid": "fc78e549-5569-44bb-a32b-552ec3df2b62"
+    },
+    {
+      "code": "200",
+      "temperature": "24",
+      "windSpeed": 15,
+      "windDirection": "north",
+      "pressure": 30,
+      "_id": "b7b22c1f-bda1-4c3b-b64b-bab77ddb84f8",
+      "stationid": "0ccdc581-892f-4d75-a9fe-a0fc8f0adee8"
     }
   ]
 }

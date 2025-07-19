@@ -1,74 +1,7 @@
 
 
 <table class="table is-fullwidth">
-  <div class="columns " style="max-width: 570px;">
-
-    <!-- Location -->
-    <div class="column is-5 has-background-black m-2">
-      <div class="columns m-2">
-        <h2 class="column title is-4 has-text-info-light">{{station.title}}</h2>
-        <figure class="image" style="width:50px">
-          <img src="/images/location_icon.png" alt="Location Icon">
-       </figure>
-      </div>
-      <p class="column is-6 has-text-white">Latitude: {{station.latitude}}</p>
-      <p class="column is-6 has-text-white">Longitude: {{station.longitude}}</p>
-    </div>
-
-    <!-- Weather -->
-    <div class="column is-5 has-background-black m-2">
-      <div class="columns m-2">
-        <h2 class="column title is-4 has-text-info-light">{{station.title}}</h2>
-        <figure class="image" style="width:50px">
-          <img src="/images/location_icon.png" alt="Location Icon">
-       </figure>
-      </div>
-      <p class="column is-6 has-text-white">Latitude: {{station.latitude}}</p>
-      <p class="column is-6 has-text-white">Longitude: {{station.longitude}}</p>
-    </div>
-
-    <!-- Temp -->
-    <div class="column is-5 has-background-black m-2">
-      <div class="columns m-2">
-        <h2 class="column title is-4 has-text-info-light">{{station.title}}</h2>
-        <figure class="image" style="width:50px">
-          <img src="/images/location_icon.png" alt="Location Icon">
-       </figure>
-      </div>
-      <p class="column is-6 has-text-white">Latitude: {{station.latitude}}</p>
-      <p class="column is-6 has-text-white">Longitude: {{station.longitude}}</p>
-    </div>
-
-    <!-- Wind -->
-    <div class="column is-5 has-background-black m-2">
-      <div class="columns m-2">
-        <h2 class="column title is-4 has-text-info-light">{{station.title}}</h2>
-        <figure class="image" style="width:50px">
-          <img src="/images/location_icon.png" alt="Location Icon">
-       </figure>
-      </div>
-      <p class="column is-6 has-text-white">Latitude: {{station.latitude}}</p>
-      <p class="column is-6 has-text-white">Longitude: {{station.longitude}}</p>
-    </div>
-
-    <!-- Pressure -->
-    <div class="column is-5 has-background-black m-2">
-      <div class="columns m-2">
-        <h2 class="column title is-4 has-text-info-light">{{station.title}}</h2>
-        <figure class="image" style="width:50px">
-          <img src="/images/location_icon.png" alt="Location Icon">
-       </figure>
-      </div>
-      <p class="column is-6 has-text-white">Latitude: {{station.latitude}}</p>
-      <p class="column is-6 has-text-white">Longitude: {{station.longitude}}</p>
-    </div>
-
-    
-
-
-  </div>
-  
-
+  {{>station-detail}}
 
   <thead>
     <tr>
