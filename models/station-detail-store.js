@@ -28,8 +28,25 @@ export const stationDetailStore = {
 
         console.log(`Max temp for station ${stationId}: ${maxTemp}`);
         return maxTemp;
+    },
+
+    async minTemp(stationId) {
+        await db.read();
+        db.data.reports ||= [];
+
+        // Filter reports for the specific station
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+
+        const temps = stationReports
+            .map(report => parseFloat(report.temperature))
+            .filter(temp => !isNaN(temp));
+
+        const minTemp = temps.length > 0 ? Math.min(...temps) : null;
+
+        console.log(`Min temp for station ${stationId}: ${minTemp}`);
+        return minTemp;
     }
 
 
-
 }
+

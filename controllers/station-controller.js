@@ -6,11 +6,13 @@ export const stationController = {
   async index(request, response) {      
     const station = await stationStore.getStationById(request.params.id);
     const maxTemperature = await stationDetailStore.maxTemp(station._id);
+    const minTemperature = await stationDetailStore.minTemp(station._id);
     
     const viewData = {
       title: "station",
       station: station,
       maxTemperature: maxTemperature?.toFixed(1),
+      minTemperature: minTemperature?.toFixed(1),
     };  
     response.render("station-view", viewData);
     },
@@ -32,6 +34,7 @@ export const stationController = {
   
 
 };
+
 
 
 

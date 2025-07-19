@@ -8,7 +8,7 @@
       "windDirection": "north",
       "pressure": 20,
       "_id": "85749bb2-849b-4390-9964-555c39406014",
-      "stationid": "8fe1d605-fe91-4c1f-b2e1-96e1574710cf"
+      "stationId": "8fe1d605-fe91-4c1f-b2e1-96e1574710cf"
     },
     {
       "code": "300",
@@ -17,7 +17,8 @@
       "windDirection": "south",
       "pressure": 13,
       "_id": "6618a7ca-c1ff-4717-a4b2-f80c2e8b23ae",
-      "stationid": "8fe1d605-fe91-4c1f-b2e1-96e1574710cf"
+      "stationId": "8fe1d605-fe91-4c1f-b2e1-96e1574710cf"
     }
   ]
 }
+

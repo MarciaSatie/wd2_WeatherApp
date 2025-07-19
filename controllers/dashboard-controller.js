@@ -6,7 +6,7 @@ export const dashboardController = {
       title: "Weather Dashboard",
       stations: await stationStore.getAllStations(),
       latitude: Number(request.body.latitude),
-    longitude: Number(request.body.longitude),
+      longitude: Number(request.body.longitude),
     };
     console.log("dashboard rendering");
     response.render("dashboard-view", viewData);
@@ -27,4 +27,5 @@ export const dashboardController = {
     response.redirect("/dashboard");
   },
 };
+
 
