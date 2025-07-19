@@ -18,7 +18,7 @@ export const reportStore = {
     return report;
   },
 
-  async getReportsByStationId(id) {
+  async getReportsBystationId(id) {
     await db.read();
     return db.data.reports.filter((report) => report.stationId === id);
   },
@@ -40,14 +40,15 @@ export const reportStore = {
     await db.write();
   },
 
-  async updatereport(report, updatedReport) {
-    report.title = updatedReport.title;
-    report.artist = updatedReport.artist;
-    report.duration = updatedReport.duration;
+  async updateReport(report, updatedReport) {
+    report.code = updatedReport.code;
+    report.temperature = updatedReport.temperature;
+    report.windSpeed = updatedReport.duration;
+    report.windDirection = updatedReport.windDirection;
+    report.pressure = updatedReport.pressure;
     await db.write();
   },
 };
-
 
 
 

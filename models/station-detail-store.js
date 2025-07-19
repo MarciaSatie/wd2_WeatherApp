@@ -45,7 +45,24 @@ export const stationDetailStore = {
 
         console.log(`Min temp for station ${stationId}: ${minTemp}`);
         return minTemp;
-    }
+    },
+
+    async maxWind(stationId) {
+        await db.read();
+        db.data.reports ||= [];
+
+        // Filter reports for the specific station
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+
+        const reportList = stationReports
+            .map(report => parseFloat(report.windSpeed))
+            .filter(reportList => !isNaN(reportList));
+
+        const max = reportList.length > 0 ? Math.max(...reportList) : null;
+
+        console.log(`Max Wind Direction for station ${stationId}: ${max}`);
+        return max;
+    },
 
 
 }
