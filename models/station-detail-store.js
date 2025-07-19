@@ -13,20 +13,23 @@ export const stationDetailStore = {
         return db.data.reports;
     },
 
-    async maxTemp() {
+    async maxTemp(stationId) {
         await db.read();
         db.data.reports ||= [];
 
-        // Filter only valid numeric temperatures
-        const temps = db.data.reports
+        // Filter reports for the specific station
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+
+        const temps = stationReports
             .map(report => parseFloat(report.temperature))
             .filter(temp => !isNaN(temp));
 
         const maxTemp = temps.length > 0 ? Math.max(...temps) : null;
 
-        console.log(`Maximum temperature found: ${maxTemp}`);
+        console.log(`Max temp for station ${stationId}: ${maxTemp}`);
         return maxTemp;
-    },
+    }
+
 
 
 }

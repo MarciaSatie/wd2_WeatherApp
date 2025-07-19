@@ -2,22 +2,10 @@
   "file": "./models/stations.json",
   "stations": [
     {
-      "title": "save us",
-      "_id": "6c6dc60e-6d05-41d9-8a97-f24092d4a4ab"
-    },
-    {
-      "title": "nanana",
-      "_id": "31583ca6-7c38-42a5-b9e9-48e81b99f8c0"
-    },
-    {
-      "title": "none",
-      "_id": "5e16bf58-fd7f-4a1c-8188-26d1d3f2a0d7"
-    },
-    {
-      "title": "hell",
-      "latitude": "94",
-      "longitude": "345",
-      "_id": "0ccdc581-892f-4d75-a9fe-a0fc8f0adee8"
+      "title": "station1",
+      "latitude": "10",
+      "longitude": "12",
+      "_id": "8fe1d605-fe91-4c1f-b2e1-96e1574710cf"
     }
   ]
 }
