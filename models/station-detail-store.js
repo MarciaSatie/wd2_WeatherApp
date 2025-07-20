@@ -3,7 +3,7 @@ import { initStore } from "../utils/store-utils.js";
 import { reportStore } from "./report-store.js";
 
 const db = initStore("reports");
-console.log("Station-Detail store initialized");
+//console.log("Station-Detail store initialized");
 const weatherInfo = [
             {code:200, description:"thunderstorm with light rain",icon:"11d"},
             {code:201, description:"thunderstorm with rain",icon:"11d"},
@@ -65,7 +65,7 @@ export const stationDetailStore = {
     async getAllReports() {
         await db.read();
         db.data.reports ||= []; // Ensure reports array is initialized
-        console.log(`Found ${db.data.reports.length} reports`);
+        //console.log(`Found ${db.data.reports.length} reports`);
         return db.data.reports;
     },
 
@@ -82,7 +82,7 @@ export const stationDetailStore = {
 
         const maxTemp = temps.length > 0 ? Math.max(...temps) : null;
 
-        console.log(`Max temp for station ${stationId}: ${maxTemp}`);
+        //console.log(`Max temp for station ${stationId}: ${maxTemp}`);
         return maxTemp;
     },
 
@@ -99,7 +99,7 @@ export const stationDetailStore = {
 
         const minTemp = temps.length > 0 ? Math.min(...temps) : null;
 
-        console.log(`Min temp for station ${stationId}: ${minTemp}`);
+        //console.log(`Min temp for station ${stationId}: ${minTemp}`);
         return minTemp;
     },
 
@@ -116,7 +116,7 @@ export const stationDetailStore = {
 
         const max = reportList.length > 0 ? Math.max(...reportList) : null;
 
-        console.log(`Max Wind Direction for station ${stationId}: ${max}`);
+        //console.log(`Max Wind Direction for station ${stationId}: ${max}`);
         return max;
     },
 
@@ -133,7 +133,7 @@ export const stationDetailStore = {
 
         const min = reportList.length > 0 ? Math.min(...reportList) : null;
 
-        console.log(`Min Wind Direction for station ${stationId}: ${min}`);
+        //console.log(`Min Wind Direction for station ${stationId}: ${min}`);
         return min;
     },
     async maxPressure(stationId) {
@@ -149,7 +149,7 @@ export const stationDetailStore = {
 
         const max = reportList.length > 0 ? Math.max(...reportList) : null;
 
-        console.log(`Max Pressure for station ${stationId}: ${max}`);
+        //console.log(`Max Pressure for station ${stationId}: ${max}`);
         return max;
     },    
     async minPressure(stationId) {
@@ -165,7 +165,7 @@ export const stationDetailStore = {
 
         const min = reportList.length > 0 ? Math.min(...reportList) : null;
 
-        console.log(`Min Pressure for station ${stationId}: ${min}`);
+        //console.log(`Min Pressure for station ${stationId}: ${min}`);
         return min;
     },
 
@@ -181,11 +181,16 @@ export const stationDetailStore = {
                 latestReport = report;
             }
         });
+        console.log(`Latest report date: ${currentDate}`);
+        console.log(`Latest report: ${JSON.stringify(latestReport)}`);
+        const weather = weatherInfo.find(item => item.code === Number(latestReport.code));
 
-        const weather = weatherInfo.find(item => latestReport.code);
         if (weather) {
-            //console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
+            console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
             return weather;
+        }else{
+            const obj ={icon:"01d", description:"No weather data available"};
+            return obj;
         }
     },
 
