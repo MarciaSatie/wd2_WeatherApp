@@ -1,6 +1,18 @@
-<nav class="navbar mb-6">
+<nav class="navbar mb-6" style="border: 1px solid #ccc; padding: 0;">
+
   <div class="navbar-brand">
-    {{> brand}}
+    <div class="columns">
+      <div class="column">
+        <a id="weatherTop" 
+          class="button has-text-info is-size-3 has-text-weight-bold"
+          href="/weatherTop"
+          style="border: 1px solid #ccc; padding: 0.5rem 1rem;">
+          Weather Top
+        </a>
+      </div>
+      <div class="column">{{> brand}}</div>
+     
+    </div>
   </div>
   <div class="navbar-menu" id="navMenu">
     <div class="navbar-end">

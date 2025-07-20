@@ -25,6 +25,13 @@
       "longitude": "24",
       "userId": "e553ee12-0444-4cfc-9a28-9ee5e51b035f",
       "_id": "e0e03b06-fd55-4436-9387-81b00707df4f"
+    },
+    {
+      "title": "kilkenny",
+      "latitude": "14",
+      "longitude": "34",
+      "userId": "ab7e6efc-8a9a-42e8-862d-342c4135e666",
+      "_id": "9c6c249a-ae76-484d-b5d0-65f30be50fdf"
     }
   ]
 }

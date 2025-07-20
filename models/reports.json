@@ -18,6 +18,24 @@
       "pressure": 7,
       "_id": "4b3c8a95-53db-4d67-b0b6-900fbc9f9f1c",
       "stationId": "83ba9635-857f-452b-9e14-6a877f6a723a"
+    },
+    {
+      "code": "",
+      "temperature": "",
+      "windSpeed": 0,
+      "windDirection": "",
+      "pressure": 0,
+      "_id": "5106d991-c1ab-41a5-99e9-3df5dafcf4b4",
+      "stationId": "9c6c249a-ae76-484d-b5d0-65f30be50fdf"
+    },
+    {
+      "code": "200",
+      "temperature": "13",
+      "windSpeed": 23,
+      "windDirection": "south-west",
+      "pressure": 5,
+      "_id": "bfa5e38c-af39-467d-bb1b-7646102c757b",
+      "stationId": "9c6c249a-ae76-484d-b5d0-65f30be50fdf"
     }
   ]
 }

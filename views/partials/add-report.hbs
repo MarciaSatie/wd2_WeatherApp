@@ -11,9 +11,25 @@
       <div class="field">
         <input class="input" type="text" placeholder="Wind Speed" name="windSpeed">
       </div>
+
       <div class="field">
-        <input class="input" type="text" placeholder="Wind Direction" name="windDirection">
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select class="has-text-grey-light" name="windDirection" required>
+              <option value="" disabled selected>Wind Direction</option>
+              <option value="north">North</option>
+              <option value="north-east">North-East</option>
+              <option value="east">East</option>
+              <option value="south-east">South-East</option>
+              <option value="south">South</option>
+              <option value="south-west">South-West</option>
+              <option value="west">West</option>
+              <option value="north-west">North-West</option>
+            </select>
+          </div>
+        </div>
       </div>
+
       <div class="field">
         <input class="input" type="text" placeholder="Pressure" name="pressure">   
       </div>   
