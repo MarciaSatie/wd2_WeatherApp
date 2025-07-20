@@ -75,6 +75,16 @@
       "_id": "736b9515-a472-4e24-a868-bc92bfc55c8c",
       "date": "Sunday, July 20, 2025 10:29",
       "stationId": "e68ffa81-023f-4e97-9660-117152250ca2"
+    },
+    {
+      "code": "310",
+      "temperature": "24",
+      "windSpeed": 27,
+      "windDirection": "west",
+      "pressure": 20,
+      "_id": "bbd9eb3a-1db5-4fdc-ac4d-e9b04f26de08",
+      "date": "Sunday, July 20, 2025 10:36",
+      "stationId": "e68ffa81-023f-4e97-9660-117152250ca2"
     }
   ]
 }

@@ -8,15 +8,6 @@ import path from "path";// to create absolute paths for images
 // to convert the file URL to a path
 import { fileURLToPath } from 'url';
 
-const app = express();
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(fileUpload());
-app.engine(".hbs", engine({ extname: ".hbs" }));
-app.set("view engine", ".hbs");
-app.set("views", "./views");
-app.use("/", router);
-
 //manipulating absolute paths to have acceess to images folder.
 const __filename = fileURLToPath(import.meta.url);
 //console.log(`__filename: ${__filename}`);
@@ -25,7 +16,18 @@ const __dirname = path.dirname(__filename);// return directory (WebApp-02) absol
 const imagePath = path.join(__dirname, "images");
 //console.log(`imagePath: ${imagePath}`);// add images folder to the path _dirname.
 
+const app = express();
+
 app.use("/images", express.static(imagePath));
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(fileUpload());
+app.engine(".hbs", engine({ extname: ".hbs" }));
+app.set("view engine", ".hbs");
+app.set("views", "./views");
+app.use("/", router);
+
 
 const listener = app.listen(process.env.PORT || 4000, function () {
   console.log(`App started on http://localhost:${listener.address().port}`);
