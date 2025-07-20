@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import { initStore } from "../utils/store-utils.js";
+import dayjs from 'dayjs';
 
 const db = initStore("reports");
 
@@ -11,8 +12,14 @@ export const reportStore = {
 
   async addReport(stationId, report) {
     await db.read();
+
+    const now = dayjs();
+    const dateFormatted = now.format('dddd, MMMM D, YYYY h:mm');
+
     report._id = v4();
+    report.date = dateFormatted;
     report.stationId = stationId;
+    
     db.data.reports.push(report);
     await db.write();
     return report;

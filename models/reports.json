@@ -36,6 +36,15 @@
       "pressure": 5,
       "_id": "bfa5e38c-af39-467d-bb1b-7646102c757b",
       "stationId": "9c6c249a-ae76-484d-b5d0-65f30be50fdf"
+    },
+    {
+      "code": "510",
+      "temperature": "13",
+      "windSpeed": 10,
+      "windDirection": "south-east",
+      "pressure": 6,
+      "_id": "85319c34-0757-44f9-b7ae-55da71177b6e",
+      "stationId": "e0e03b06-fd55-4436-9387-81b00707df4f"
     }
   ]
 }

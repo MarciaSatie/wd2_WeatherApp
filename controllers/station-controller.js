@@ -5,13 +5,14 @@ import { stationDetailStore } from "../models/station-detail-store.js";
 export const stationController = {
   async index(request, response) {      
     const station = await stationStore.getStationById(request.params.id);
-    const reports = await reportStore.getReportsBystationId(station._id);
+    const reports = await reportStore.getReportsByStationId(station._id);
     const maxTemperature = await stationDetailStore.maxTemp(station._id);
     const minTemperature = await stationDetailStore.minTemp(station._id);
     const maxWind = await stationDetailStore.maxWind(station._id);
     const minWind = await stationDetailStore.minWind(station._id);
     const maxPressure = await stationDetailStore.maxPressure(station._id);
     const minPressure = await stationDetailStore.minPressure(station._id);
+    
     
     const viewData = {
       title: "station",

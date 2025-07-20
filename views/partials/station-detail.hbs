@@ -13,15 +13,15 @@
     </div>
 
     <!-- Weather -->
+    <!--"https://openweathermap.org/img/wn/02d.png"-->
     <div class="column is-5 has-background-black m-2">
       <div class="columns m-2">
         <h2 class="column title has-text-info-light">Weather</h2>
         <figure class="image" style="width:50px">
-          <img src="https://openweathermap.org/img/wn/02d.png" alt="Weather Icon">
+          <img src={{station.weatherIcon}} alt="Weather Icon">
        </figure>
       </div>
-      <p class="column is-6 has-text-white">Latitude: {{station.latitude}}</p>
-      <p class="column is-6 has-text-white">Longitude: {{station.longitude}}</p>
+      <p class="column is-6 has-text-white"> {{station.weather}}</p>
     </div>
 
     <!-- Temp -->
