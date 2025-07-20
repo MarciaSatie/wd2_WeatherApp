@@ -169,12 +169,23 @@ export const stationDetailStore = {
         return min;
     },
 
-    async getWeatherIconByCode(code) {
+    async getWeatherInfoByCode(stationId) {
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+        let currentDate = new Date(0);
+        let latestReport = null;
 
-        const weather = weatherInfo.find(item => item.code === code);
+        stationReports.map(report => {
+            const date1 = new Date(report.date);
+            if (date1 > currentDate) {
+                currentDate = date1;
+                latestReport = report;
+            }
+        });
+
+        const weather = weatherInfo.find(item => latestReport.code);
         if (weather) {
             //console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
-            return weather.icon;
+            return weather;
         }
     },
 

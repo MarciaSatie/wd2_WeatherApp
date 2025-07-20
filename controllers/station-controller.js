@@ -12,6 +12,9 @@ export const stationController = {
     const minWind = await stationDetailStore.minWind(station._id);
     const maxPressure = await stationDetailStore.maxPressure(station._id);
     const minPressure = await stationDetailStore.minPressure(station._id);
+    const weatherInfo = await stationDetailStore.getWeatherInfoByCode(station._id);
+    const weatherIcon = weatherInfo.icon;
+    const weatherDescription = weatherInfo.description;
     
     
     const viewData = {
@@ -24,6 +27,8 @@ export const stationController = {
       minWind: minWind?.toFixed(1),
       maxPressure: maxPressure?.toFixed(1),
       minPressure: minPressure?.toFixed(1),
+      weatherIcon: "https://openweathermap.org/img/wn/"+weatherIcon+".png",
+      weatherDescription: weatherDescription,
     };  
     response.render("station-view", viewData);
     },
