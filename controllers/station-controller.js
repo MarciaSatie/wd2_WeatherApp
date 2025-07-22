@@ -15,8 +15,13 @@ export const stationController = {
     const weatherInfo = await stationDetailStore.getWeatherInfoByCode(station._id);
     const weatherIcon = weatherInfo.icon;
     const weatherDescription = weatherInfo.description;
-    
-    
+    // Get the latest report for the station
+    const latestReport= await stationDetailStore.getLatestReport(station._id);
+    const latestTemperature = latestReport ? latestReport.temperature : "N/A";
+    const latestPressure = latestReport ? latestReport.pressure : "N/A";
+    const latestWindSpeed = latestReport ? latestReport.windSpeed : "N/A";
+    const latestWindDirection = latestReport ? latestReport.windDirection : "N/A";
+
     const viewData = {
       title: "station",
       station: station,
@@ -29,6 +34,10 @@ export const stationController = {
       minPressure: minPressure?.toFixed(1),
       weatherIcon: "https://openweathermap.org/img/wn/"+weatherIcon+".png",
       weatherDescription: weatherDescription,
+      latestTemperature: latestTemperature,
+      latestPressure: latestPressure,
+      latestWindSpeed: latestWindSpeed,
+      latestWindDirection: latestWindDirection,
     };  
     response.render("station-view", viewData);
     },

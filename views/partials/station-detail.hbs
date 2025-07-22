@@ -32,6 +32,7 @@
           <img src="/images/temp_icon.png" alt="Temp Icon">
        </figure>
       </div>
+      <p class="column is-6 has-text-white">{{latestTemperature}}°C</p>
       <p class="column is-6 has-text-white">Max Temp: {{maxTemperature}} °C</p>
       <p class="column is-6 has-text-white">Min Temp: {{minTemperature}} °C</p>
     </div>
@@ -44,6 +45,8 @@
           <img src="/images/wind_icon.png" alt="Wind Icon">
        </figure>
       </div>
+      <p class="column is-6 has-text-white">{{latestWindSpeed}} m/s</p>
+      <p class="column is-6 has-text-white">Direction: {{latestWindDirection}}°</p>
       <p class="column is-6 has-text-white">Max: {{maxWind}}</p>
       <p class="column is-6 has-text-white">Min: {{minWind}}</p>
     </div>
@@ -56,6 +59,7 @@
           <img src="/images/pressure_icon.png" style="filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(45deg);" alt="Pressure Icon">
        </figure>
       </div>
+      <p class="column is-6 has-text-white">{{latestPressure}} hPa</p>
       <p class="column is-6 has-text-white">Max: {{maxPressure}}</p>
       <p class="column is-6 has-text-white">Min: {{minPressure}}</p>
     

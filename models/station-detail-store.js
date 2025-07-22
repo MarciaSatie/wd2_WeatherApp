@@ -181,12 +181,12 @@ export const stationDetailStore = {
                 latestReport = report;
             }
         });
-        console.log(`Latest report date: ${currentDate}`);
-        console.log(`Latest report: ${JSON.stringify(latestReport)}`);
+        //console.log(`Latest report date: ${currentDate}`);
+        //console.log(`Latest report: ${JSON.stringify(latestReport)}`);
         const weather = weatherInfo.find(item => item.code === Number(latestReport.code));
 
         if (weather) {
-            console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
+            //console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
             return weather;
         }else{
             const obj ={icon:"01d", description:"No weather data available"};
@@ -201,7 +201,26 @@ export const stationDetailStore = {
             //console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
             return weather.description;
         }
-    }
+    },
+
+    async getLatestReport(stationId) {
+        const stationReports = db.data.reports.filter(report => report.stationId === stationId);
+        let currentDate = new Date(0);
+        let latestReport = null;
+
+        stationReports.map(report => {
+            const date1 = new Date(report.date);
+            if (date1 > currentDate) {
+                currentDate = date1;
+                latestReport = report;
+            }
+        });
+        console.log(`Latest report from getLatestReport: ${JSON.stringify(latestReport)}`);
+        return latestReport;
+    },
+    
+
+
 
 }
 
