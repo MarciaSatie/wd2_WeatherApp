@@ -4,6 +4,7 @@ import { aboutController } from "./controllers/about-controller.js";
 import { weatherTopController } from "./controllers/weatherTop-controller.js";
 import { stationController } from "./controllers/station-controller.js";
 import { accountsController } from './controllers/accounts-controller.js';
+import { userController } from './controllers/user-controller.js';
 
 console.log("dashboardController import:", dashboardController);
 
@@ -17,6 +18,7 @@ router.get("/logout", accountsController.logout);
 router.post("/register", accountsController.register);
 router.post("/authenticate", accountsController.authenticate);
 
+
 //App routes
 router.get("/dashboard", dashboardController.index);
 router.get("/about", aboutController.index);
@@ -28,7 +30,8 @@ router.post("/station/:id/addReport", stationController.addReport);
 router.post("/station/:id/deleteReport/:reportId", stationController.deleteReport);
 
 
-
+router.get("/user", userController.index);
+router.post("/user/update", userController.updateUserInformation);
 
 
 

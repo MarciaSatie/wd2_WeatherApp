@@ -39,4 +39,21 @@ export const userStore = {
     db.data.users = [];
     await db.write();
   },
+
+  async updateUser(id, updates) {
+    const user = await this.getUserById(id);
+    if (!user) return null;
+
+    // Only copy allowed fields
+    const allowed = ["firstName", "lastName", "email", "password"];
+    for (const key of allowed) {
+      if (updates[key] !== undefined) {
+        user[key] = updates[key];
+      }
+    }
+
+    await db.write(); // persist to users.json (assuming initStore gives you write())
+    return user;
+  },
+
 };
