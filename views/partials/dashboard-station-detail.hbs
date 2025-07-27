@@ -1,0 +1,71 @@
+<div class="columns " style="max-width: 570px;">
+
+    <!-- Location -->
+    <div class="column is-5 has-background-black m-2">
+      <div class="columns m-2">
+        <h2 class="column title has-text-info-light">{{title}}</h2>
+        <figure class="image" style="width:50px">
+          <img src="/images/location_icon.png" alt="Location Icon">
+       </figure>
+      </div>
+      <p class="column is-6 has-text-white is-size-6">Latitude: {{latitude}}</p>
+      <p class="column is-6 has-text-white is-size-6">Longitude: {{longitude}}</p>
+    </div>
+
+    <!-- Weather -->
+    <!--"https://openweathermap.org/img/wn/02d.png"-->
+    <div class="column is-5 has-background-black m-2">
+      <div class="columns m-2">
+        <h2 class="column title has-text-info-light">Weather</h2>
+        <figure class="image" style="width:50px">
+          <img src={{weatherIcon}} alt="Weather Icon">
+       </figure>
+      </div>
+      <p class="column is-6 has-text-white is-size-6">{{weatherDescription}}</p>
+    </div>
+
+    <!-- Temp -->
+    <div class="column is-5 has-background-black m-2">
+      <div class="columns m-2">
+        <h2 class="column title has-text-info-light">Temp</h2>
+        <figure class="image" style="width:50px">
+          <img src="/images/temp_icon.png" alt="Temp Icon">
+       </figure>
+      </div>
+      <p class="column is-6 has-text-white is-size-6">{{latestTemperature}}°C</p>
+      <p class="column is-6 has-text-white is-size-6">Max Temp: {{maxTemperature}} °C</p>
+      <p class="column is-6 has-text-white is-size-6">Min Temp: {{minTemperature}} °C</p>
+    </div>
+
+    <!-- Wind -->
+    <div class="column is-5 has-background-black m-2">
+      <div class="columns m-2">
+        <h2 class="column title has-text-info-light">Wind</h2>
+        <figure class="image" style="width:50px">
+          <img src="/images/wind_icon.png" alt="Wind Icon">
+       </figure>
+      </div>
+      <p class="column is-6 has-text-white is-size-6">{{latestWindSpeed}} m/s</p>
+      <p class="column is-6 has-text-white is-size-6">Direction: {{latestWindDirection}}°</p>
+      <p class="column is-6 has-text-white is-size-6">Max: {{maxWind}}</p>
+      <p class="column is-6 has-text-white is-size-6">Min: {{minWind}}</p>
+    </div>
+
+    <!-- Pressure -->
+    <div class="column is-5 has-background-black m-2">
+      <div class="columns m-2">
+        <h2 class="column title has-text-info-light">Pressure</h2>
+        <figure class="image" style="width:50px">
+          <img src="/images/pressure_icon.png" style="filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(45deg);" alt="Pressure Icon">
+       </figure>
+      </div>
+      <p class="column is-6 has-text-white is-size-6">{{latestPressure}} hPa</p>
+      <p class="column is-6 has-text-white is-size-6">Max: {{maxPressure}}</p>
+      <p class="column is-6 has-text-white is-size-6">Min: {{minPressure}}</p>
+    
+    </div>
+
+    
+
+
+  </div>
