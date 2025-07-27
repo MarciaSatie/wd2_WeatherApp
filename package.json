@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node --inspect server.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
