@@ -1,27 +1,53 @@
 import { stationStore } from "../models/station-store.js";
 import{accountsController} from "./accounts-controller.js";
 import { reportStore } from "../models/report-store.js";
+import {stationDetailStore} from "../models/station-detail-store.js";
 
 export const dashboardController = {
+
   async index(request, response) {
-    const loggedInUser = await accountsController.getLoggedInUser(request);
+  const loggedInUser = await accountsController.getLoggedInUser(request);
+  const stationByID = await stationStore.getAllStaionsByUserId(loggedInUser._id);
 
-    const stationByID = await stationStore.getAllStaionsByUserId(loggedInUser._id);
-    const sortedStations = stationByID.sort((a, b) => {
-      return a.title.localeCompare(b.title); // Sort stations by title is better than < or > because handles case differences and non-English characters. 
-   });
+  const sortedStations = stationByID.sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  });
 
-    const viewData = {
-      title: "Weather Dashboard",
-      stations: sortedStations,
-      user: loggedInUser,
-      userId: loggedInUser._id,
-      
-    };
-    console.log("dashboard rendering");
-    response.render("dashboard-view", viewData);
-    
-  },
+  // Use a simple loop instead of map+await
+  const stationsInfo = [];
+  for (const station of sortedStations) {
+    const maxTemp = await stationDetailStore.maxTemp(station._id);
+    const minTemp = await stationDetailStore.minTemp(station._id);
+    const maxWind = await stationDetailStore.maxWind(station._id);
+    const minWind = await stationDetailStore.minWind(station._id);
+    const maxPressure = await stationDetailStore.maxPressure(station._id);
+    const minPressure = await stationDetailStore.minPressure(station._id);
+
+    stationsInfo.push({
+      _id: station._id,
+      title: station.title,
+      latitude: station.latitude,
+      longitude: station.longitude,
+      maxTemperature: maxTemp,
+      minTemperature: minTemp,
+      maxWind: maxWind,
+      minWind: minWind,
+      maxPressure: maxPressure,
+      minPressure: minPressure,
+    });
+  }
+
+  const viewData = {
+    title: "Weather Dashboard",
+    stations: stationsInfo,
+    user: loggedInUser,
+    userId: loggedInUser._id,
+  };
+
+  console.log("dashboard rendering");
+  response.render("dashboard-view", viewData);
+},
+
 
   async addStation(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
