@@ -94,6 +94,9 @@ reference: https://www.geeksforgeeks.org/web-tech/express-js-express-static-func
 **How to fix ReferenceError: __dirname** : When I was trying to import an image usinge the tutorial above, I was getting the error "ReferenceError:__dirnames". To fix that I follwoed the tutorial from GeeksforGeeks: <br>
 reference:https://www.geeksforgeeks.org/node-js/how-to-fix-referenceerror-dirname-is-not-defined-in-es-module-scope-in-javascript/
 
+** Chrome Debbuger** : at package.json was changed  "start: node server.js" to "start": "node --inspect server.js", allowing to use node in the brouser.
+reference: https://www.youtube.com/shorts/8WN5LogHiUE
+
 
 ## 🙋‍♂️ Author
 Made with ❤️ by [Marcia Satie](https://github.com/yourusername)
