@@ -22,6 +22,17 @@ export const dashboardController = {
     const minWind = await stationDetailStore.minWind(station._id);
     const maxPressure = await stationDetailStore.maxPressure(station._id);
     const minPressure = await stationDetailStore.minPressure(station._id);
+    const weatherInfo = await stationDetailStore.getWeatherInfoByCode(station._id);
+    const weatherDescription = weatherInfo.description;
+    const weatherIcon = weatherInfo.icon;
+
+    //latest report
+    const latestReport = await stationDetailStore.getLatestReport(station._id);
+    console.log(`Found ${latestReport} latest reports for station ${station._id}`);
+    const latestTemperature =latestReport.temperature ;
+    const latestWindSpeed = latestReport.windSpeed;
+    const latestPressure = latestReport.pressure;
+
 
     stationsInfo.push({
       _id: station._id,
@@ -34,9 +45,18 @@ export const dashboardController = {
       minWind: minWind,
       maxPressure: maxPressure,
       minPressure: minPressure,
+      weatherIcon: "https://openweathermap.org/img/wn/"+weatherIcon+".png",
+      weatherDescription: weatherDescription,
+
+      // Latest report data
+      latestTemperature: latestTemperature,
+      latestWindSpeed: latestWindSpeed,
+      latestPressure: latestPressure,
+      latestReport: latestReport,
     });
   }
 
+ 
   const viewData = {
     title: "Weather Dashboard",
     stations: stationsInfo,
