@@ -1,4 +1,25 @@
 {
   "file": "./models/reports.json",
-  "reports": []
+  "reports": [
+    {
+      "code": "400",
+      "temperature": "14",
+      "windSpeed": 52,
+      "windDirection": "north-east",
+      "pressure": 202,
+      "_id": "97186784-2f48-4b17-b312-3a5e56244c4f",
+      "date": "Sunday, July 27, 2025 1:18",
+      "stationId": "63aa2105-ce5c-4df3-96a8-1cae057b1977"
+    },
+    {
+      "code": "500",
+      "temperature": "32",
+      "windSpeed": 56,
+      "windDirection": "east",
+      "pressure": 50,
+      "_id": "03b25ae4-36d8-471c-a3d2-fad18b5005d8",
+      "date": "Sunday, July 27, 2025 1:19",
+      "stationId": "63aa2105-ce5c-4df3-96a8-1cae057b1977"
+    }
+  ]
 }

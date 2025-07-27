@@ -5,11 +5,16 @@ import { reportStore } from "../models/report-store.js";
 export const dashboardController = {
   async index(request, response) {
     const loggedInUser = await accountsController.getLoggedInUser(request);
+
+    const stationByID = await stationStore.getAllStaionsByUserId(loggedInUser._id);
+    const sortedStations = stationByID.sort((a, b) => {
+      return a.title.localeCompare(b.title); // Sort stations by title is better than < or > because handles case differences and non-English characters. 
+   });
+
     const viewData = {
       title: "Weather Dashboard",
-      stations: await stationStore.getAllStaionsByUserId(loggedInUser._id),
-      latitude: Number(request.body.latitude),
-      longitude: Number(request.body.longitude),
+      stations: sortedStations,
+      user: loggedInUser,
       userId: loggedInUser._id,
       
     };
