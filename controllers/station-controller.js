@@ -23,6 +23,7 @@ export const stationController = {
     const latestWindDirection = latestReport ? latestReport.windDirection : "N/A";
 
     const viewData = {
+      brandName: "Weather in "+ station.title,
       title: "station",
       station: station,
       reports: reports,

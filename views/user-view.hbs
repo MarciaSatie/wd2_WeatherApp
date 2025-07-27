@@ -1,0 +1,34 @@
+{{> menu active="test"}}
+
+<section class="section">
+  <h1 class="title">Hi {{firstName}}, welcome back.</h1>
+  <br>
+  <h1 class="title is-size-5">Edit Information</h1>
+  <form action="/user/update" method="POST">
+    <label class="label">Name</label>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field">
+          <input class="input" type="text" placeholder={{firstName}} name="firstName">
+        </div>
+        <div class="field">
+          <input class="input" type="text" placeholder={{lastName}} name="lastName">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Email</label> <input class="input" type="text" placeholder={{email}} name="email">
+    </div>
+    <div class="field">
+      <label class="label">Password</label> <input class="input" type="password" placeholder="Enter New Password" name="password">
+    </div>
+    <div class="field is-grouped">
+      <button class="button is-link">Update Info</button>
+    </div>
+  </form>
+</section>
+
+
+
+
+

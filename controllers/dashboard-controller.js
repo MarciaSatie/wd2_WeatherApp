@@ -28,10 +28,18 @@ export const dashboardController = {
 
     //latest report
     const latestReport = await stationDetailStore.getLatestReport(station._id);
-    console.log(`Found ${latestReport} latest reports for station ${station._id}`);
-    const latestTemperature =latestReport.temperature ;
-    const latestWindSpeed = latestReport.windSpeed;
-    const latestPressure = latestReport.pressure;
+    if (!latestReport) {
+      console.log(`No reports found for station ${station._id}`);
+    }
+    let latestTemperature = "N/A";
+    let latestWindSpeed = "N/A";
+    let latestPressure = "N/A";
+
+    if (latestReport) {
+      latestTemperature = latestReport.temperature ?? "N/A";
+      latestWindSpeed = latestReport.windSpeed ?? "N/A";
+      latestPressure = latestReport.pressure ?? "N/A";
+    }
 
 
     stationsInfo.push({

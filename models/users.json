@@ -2,9 +2,9 @@
   "file": "./models/users.json",
   "users": [
     {
-      "firstName": "m",
-      "lastName": "s",
-      "email": "m",
+      "firstName": "Sponge Bob",
+      "lastName": "Squarepants",
+      "email": "sp",
       "password": "1234",
       "_id": "e553ee12-0444-4cfc-9a28-9ee5e51b035f"
     },
@@ -16,10 +16,10 @@
       "_id": "ab7e6efc-8a9a-42e8-862d-342c4135e666"
     },
     {
-      "firstName": "m",
-      "lastName": "1234",
-      "email": "",
-      "password": "",
+      "firstName": "Patric",
+      "lastName": "Star",
+      "email": "p",
+      "password": "1234",
       "_id": "3aaf38fc-239e-4359-b404-f797f4fc24f1"
     }
   ]
