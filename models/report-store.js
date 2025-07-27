@@ -27,6 +27,8 @@ export const reportStore = {
 
   async getReportsByStationId(id) {
     await db.read();
+    db.data.reports ||= []; // Ensure reports array is initialized
+    //console.log(`Found ${db.data.reports.length} reports for station ${id}`);
     return db.data.reports.filter((report) => report.stationId === id);
   },
 
