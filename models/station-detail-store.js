@@ -181,16 +181,21 @@ export const stationDetailStore = {
                 latestReport = report;
             }
         });
-        //console.log(`Latest report date: ${currentDate}`);
-        //console.log(`Latest report: ${JSON.stringify(latestReport)}`);
-        const weather = weatherInfo.find(item => item.code === Number(latestReport.code));
 
-        if (weather) {
-            //console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
-            return weather;
+        if(latestReport === null) {
+            console.log(`No reports found for station ${stationId}`);
+            return {icon:"01d", description:"No weather data available"};
         }else{
-            const obj ={icon:"01d", description:"No weather data available"};
-            return obj;
+            const weather = weatherInfo.find(item => item.code === Number(latestReport.code));
+    
+            if (weather) {
+                //console.log(`Weather description: ${weather.description}, Icon: ${weather.icon}`);
+                return weather;
+            }else{
+                const obj ={icon:"01d", description:"No weather data available"};
+                return obj;
+            }
+
         }
     },
 
