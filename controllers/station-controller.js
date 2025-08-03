@@ -1,9 +1,15 @@
 import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
 import { stationDetailStore } from "../models/station-detail-store.js";
+import axios from "axios";
+import { json } from "express";
+
+
+
 
 export const stationController = {
-  async index(request, response) {      
+
+  async index(request, response) {   
     const station = await stationStore.getStationById(request.params.id);
     const reports = await reportStore.getReportsByStationId(station._id);
     const maxTemperature = await stationDetailStore.maxTemp(station._id);
@@ -22,6 +28,27 @@ export const stationController = {
     const latestWindSpeed = latestReport ? latestReport.windSpeed : "N/A";
     const latestWindDirection = latestReport ? latestReport.windDirection : "N/A";
 
+    // Get infor from API
+    const myKey = "28d113c14bdcc9cd848fb2587c6c503b";
+    const cityName = station.title||"Unknown City";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myKey}&units=metric`;
+    console.log(`Fetching weather data for ${cityName} from OpenWeatherMap API: ${url}`);
+
+    const result = await axios.get(url);
+    let cityLongitude = result.data.coord.lon;
+    let cityLatitude = result.data.coord.lat;
+    let reportAPI = {};
+    if (result.status == 200) { //HTTP Status Codes that measn Success
+      const currentWeather = result.data;
+      reportAPI.code = currentWeather.weather[0].id;
+      reportAPI.temperature = currentWeather.main.temp;
+      reportAPI.windSpeed = currentWeather.wind.speed;
+      reportAPI.pressure = currentWeather.main.pressure;
+      reportAPI.windDirection = currentWeather.wind.deg;
+    }
+
+
+
     const viewData = {
       brandName: "Weather in "+ station.title,
       title: "station",
@@ -39,6 +66,14 @@ export const stationController = {
       latestPressure: latestPressure,
       latestWindSpeed: latestWindSpeed,
       latestWindDirection: latestWindDirection,
+
+      reportAPI: {
+        code: reportAPI.code,
+        temperature: reportAPI.temperature,
+        windSpeed: reportAPI.windSpeed,
+        pressure: reportAPI.pressure,
+        windDirection: reportAPI.windDirection,
+      },
     };  
     response.render("station-view", viewData);
     },
@@ -56,6 +91,34 @@ export const stationController = {
     await reportStore.addReport(station._id, newReport);
     response.redirect("/station/" + station._id);
   },
+
+  
+  async addreportAuto(request, response) {
+    console.log("rendering new report");
+    const myKey = "28d113c14bdcc9cd848fb2587c6c503b";
+    const station = await stationStore.getStationById(request.params.id);
+    const cityName = station.title||"Unknown City";
+    const weatherRequestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myKey}&units=metric`;
+    console.log(`Fetching weather data for ${cityName} from OpenWeatherMap API: ${url}`);
+
+    let report = {};
+    const result = await axios.get(weatherRequestUrl);
+    if (result.status == 200) {
+      const currentWeather = result.data;
+      report.code = currentWeather.weather[0].id;
+      report.temperature = currentWeather.main.temp;
+      report.windSpeed = currentWeather.wind.speed;
+      report.pressure = currentWeather.main.pressure;
+      report.windDirection = currentWeather.wind.deg;
+    }
+    console.log(report);
+    const viewData = {
+      title: "Weather Report",
+      reading: report,
+    };
+    response.render("dashboard-view", viewData);
+  },
+
 
   async deleteReport(request, response) {
     const reportId = request.params.reportId;
