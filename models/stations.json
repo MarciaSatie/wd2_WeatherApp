@@ -20,13 +20,6 @@
       "_id": "2cc02438-3f58-446b-bcab-66d43e850fcc"
     },
     {
-      "title": "kilkenny",
-      "latitude": "14",
-      "longitude": "34",
-      "userId": "ab7e6efc-8a9a-42e8-862d-342c4135e666",
-      "_id": "9c6c249a-ae76-484d-b5d0-65f30be50fdf"
-    },
-    {
       "title": "cork",
       "latitude": "290",
       "longitude": "290",
@@ -53,6 +46,13 @@
       "longitude": "2678",
       "userId": "3aaf38fc-239e-4359-b404-f797f4fc24f1",
       "_id": "09cc6d35-da75-4942-bbc5-2d7b588c9a42"
+    },
+    {
+      "title": "Kilkenny",
+      "latitude": 52.6542,
+      "longitude": -7.2522,
+      "userId": "ab7e6efc-8a9a-42e8-862d-342c4135e666",
+      "_id": "1a29123e-7393-4a69-a1e3-0b6b8544e80f"
     }
   ]
 }

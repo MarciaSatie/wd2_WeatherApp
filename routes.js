@@ -24,9 +24,11 @@ router.get("/dashboard", dashboardController.index);
 router.get("/about", aboutController.index);
 router.get("/weatherTop", weatherTopController.index);
 router.post("/dashboard/addStation", dashboardController.addStation);
+router.post("/dashboard/addStationAuto", dashboardController.addStationAuto);
 router.post("/station/:id/deleteStation", dashboardController.deleteStation);
 router.get("/station/:id", stationController.index);
 router.post("/station/:id/addReport", stationController.addReport);
+router.post("/station/:id/addReportAuto", stationController.addReportAuto);
 router.post("/station/:id/deleteReport/:reportId", stationController.deleteReport);
 
 

@@ -40,6 +40,16 @@
       "_id": "cf60737c-fbe8-4a8b-9aba-d4f0b2be2827",
       "date": "Sunday, July 27, 2025 4:12",
       "stationId": "09cc6d35-da75-4942-bbc5-2d7b588c9a42"
+    },
+    {
+      "code": 500,
+      "temperature": 17.43,
+      "windSpeed": 3.05,
+      "windDirection": 271,
+      "pressure": 1019,
+      "_id": "7bce5496-6736-4600-80f8-a5d9649e5e0c",
+      "date": "Sunday, August 3, 2025 6:46",
+      "stationId": "1a29123e-7393-4a69-a1e3-0b6b8544e80f"
     }
   ]
 }

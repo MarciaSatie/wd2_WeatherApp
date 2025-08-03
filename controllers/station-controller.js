@@ -1,9 +1,15 @@
 import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
 import { stationDetailStore } from "../models/station-detail-store.js";
+import axios from "axios";
+import { json } from "express";
+
+
+
 
 export const stationController = {
-  async index(request, response) {      
+
+  async index(request, response) {   
     const station = await stationStore.getStationById(request.params.id);
     const reports = await reportStore.getReportsByStationId(station._id);
     const maxTemperature = await stationDetailStore.maxTemp(station._id);
@@ -39,6 +45,8 @@ export const stationController = {
       latestPressure: latestPressure,
       latestWindSpeed: latestWindSpeed,
       latestWindDirection: latestWindDirection,
+
+
     };  
     response.render("station-view", viewData);
     },
@@ -56,6 +64,31 @@ export const stationController = {
     await reportStore.addReport(station._id, newReport);
     response.redirect("/station/" + station._id);
   },
+
+  
+  async addReportAuto(request, response) {
+    console.log("rendering new AUTO report");
+    const myKey = "28d113c14bdcc9cd848fb2587c6c503b";
+    const station = await stationStore.getStationById(request.params.id);
+    const cityName = station.title||"Unknown City";
+    const weatherRequestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myKey}&units=metric`;
+
+    let newReport = {};
+    const result = await axios.get(weatherRequestUrl);
+    if (result.status == 200) {
+      const currentWeather = result.data;
+      newReport.code = currentWeather.weather[0].id;
+      newReport.temperature = currentWeather.main.temp;
+      newReport.windSpeed = currentWeather.wind.speed;
+      newReport.windDirection = currentWeather.wind.deg;
+      newReport.pressure = currentWeather.main.pressure;
+      
+    }
+    console.log(`adding report ${newReport.title} to station ${station._id}`);
+    await reportStore.addReport(station._id, newReport);
+    response.redirect("/station/" + station._id);
+  },
+
 
   async deleteReport(request, response) {
     const reportId = request.params.reportId;

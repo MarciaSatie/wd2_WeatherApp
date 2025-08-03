@@ -2,6 +2,8 @@ import { stationStore } from "../models/station-store.js";
 import{accountsController} from "./accounts-controller.js";
 import { reportStore } from "../models/report-store.js";
 import {stationDetailStore} from "../models/station-detail-store.js";
+import axios from "axios";
+import { json } from "express";
 
 export const dashboardController = {
 
@@ -83,6 +85,29 @@ export const dashboardController = {
       title: request.body.title,
       latitude: request.body.latitude,
       longitude: request.body.longitude,
+      userId: loggedInUser?._id,// if loggedInUser is exists, use its _id, otherwise undefined.
+    };
+    console.log(`Adding station with title: ${newStation.title} | lat: ${newStation.latitude} | long: ${newStation.longitude}`);
+
+    await stationStore.addStation(newStation);
+    console.log("Station added successfully");
+
+    response.redirect("/dashboard");
+  },
+
+  async addStationAuto(request, response) {
+    const loggedInUser = await accountsController.getLoggedInUser(request);
+    const myKey = "28d113c14bdcc9cd848fb2587c6c503b";
+    const cityName = request.body.title||"Unknown City";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myKey}&units=metric`;
+    const result = await axios.get(url);
+    let cityLatitude = result.data.coord.lat;
+    let cityLongitude = result.data.coord.lon;
+
+    const newStation = {
+      title: cityName,
+      latitude: cityLatitude,
+      longitude: cityLongitude,
       userId: loggedInUser?._id,// if loggedInUser is exists, use its _id, otherwise undefined.
     };
     console.log(`Adding station with title: ${newStation.title} | lat: ${newStation.latitude} | long: ${newStation.longitude}`);
