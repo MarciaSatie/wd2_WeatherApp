@@ -20,13 +20,6 @@
       "_id": "2cc02438-3f58-446b-bcab-66d43e850fcc"
     },
     {
-      "title": "cork",
-      "latitude": "290",
-      "longitude": "290",
-      "userId": "ab7e6efc-8a9a-42e8-862d-342c4135e666",
-      "_id": "e68ffa81-023f-4e97-9660-117152250ca2"
-    },
-    {
       "title": "Sushi",
       "latitude": "12345",
       "longitude": "4321",
@@ -53,6 +46,20 @@
       "longitude": -7.2522,
       "userId": "ab7e6efc-8a9a-42e8-862d-342c4135e666",
       "_id": "1a29123e-7393-4a69-a1e3-0b6b8544e80f"
+    },
+    {
+      "title": "Cork",
+      "latitude": 51.898,
+      "longitude": -8.4706,
+      "userId": "ab7e6efc-8a9a-42e8-862d-342c4135e666",
+      "_id": "584246a1-d548-4d05-9582-dedafaeb4d23"
+    },
+    {
+      "title": "Galway",
+      "latitude": 53.2719,
+      "longitude": -9.0489,
+      "userId": "ab7e6efc-8a9a-42e8-862d-342c4135e666",
+      "_id": "6daa2830-b7d5-4d35-85e8-f7c487a8eba8"
     }
   ]
 }

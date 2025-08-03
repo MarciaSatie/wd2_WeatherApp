@@ -5,6 +5,7 @@ import {stationDetailStore} from "../models/station-detail-store.js";
 import axios from "axios";
 import { json } from "express";
 
+
 export const dashboardController = {
 
   async index(request, response) {
@@ -66,13 +67,48 @@ export const dashboardController = {
     });
   }
 
+  //getting Map information
+  const mapData = {
+    mapStations: stationsInfo.map(station => ({
+      title: station.title,
+      latitude: station.latitude,
+      longitude: station.longitude,
+    })),
+  };
+
+  const mapScript = `
+  <script>
+    const mapStations = ${JSON.stringify(mapData.mapStations)};
+    const map = L.map('map');// create a map, for now without coordinates (setView).
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add markers for each station
+    const markers = mapStations.map(station => 
+      L.marker([station.latitude, station.longitude]).bindPopup(station.title)
+    );
+
+    // Fit the map to the markers, and ading the markers to the map
+    if (markers.length > 0) { 
+      const featureGroup  = new L.featureGroup(markers).addTo(map);
+      map.fitBounds(featureGroup .getBounds());
+    }
+  </script>
+`;
+
  
   const viewData = {
     title: "Weather Dashboard",
     stations: stationsInfo,
     user: loggedInUser,
     userId: loggedInUser._id,
+    mapScript: mapScript,
   };
+
+  
 
   console.log("dashboard rendering");
   response.render("dashboard-view", viewData);
@@ -105,7 +141,7 @@ export const dashboardController = {
     let cityLongitude = result.data.coord.lon;
 
     const newStation = {
-      title: cityName,
+      title: request.body.title,
       latitude: cityLatitude,
       longitude: cityLongitude,
       userId: loggedInUser?._id,// if loggedInUser is exists, use its _id, otherwise undefined.
