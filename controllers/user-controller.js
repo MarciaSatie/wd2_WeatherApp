@@ -34,8 +34,10 @@ export const userController = {
 
     const newInfo = await userStore.updateUser(userId, updates);
 
-
-    console.log(`Updating user ${userId} with new information:`, newInfo);
+    if (newInfo) {
+      console.log("User information updated successfully:", newInfo);
+      response.redirect("/user?updated=true");
+    };
   }
 };
 
