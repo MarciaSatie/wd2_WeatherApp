@@ -100,6 +100,16 @@
       "_id": "880472a1-85c5-4783-8ef7-8bb35049668a",
       "date": "Sunday, August 3, 2025 7:27",
       "stationId": "1a29123e-7393-4a69-a1e3-0b6b8544e80f"
+    },
+    {
+      "code": 803,
+      "temperature": 18.87,
+      "windSpeed": 3.6,
+      "windDirection": 240,
+      "pressure": 1019,
+      "_id": "23c12313-4dcb-4b9c-b7cb-5bdbc4be783a",
+      "date": "Sunday, August 3, 2025 8:01",
+      "stationId": "584246a1-d548-4d05-9582-dedafaeb4d23"
     }
   ]
 }
