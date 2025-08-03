@@ -5,6 +5,37 @@
     {{station.title}}
   </div>
   {{> list-reports}}
+  <div id="chart" class="box">
+    <script>
+      const data = {
+        labels: [
+          {{#each reports}}
+            "{{date}}",
+          {{/each}}
+        ],
+        datasets: [
+          {
+            name: "Temperature", type: "line",
+            values: [
+              {{#each reports}}
+                {{temperature}},
+              {{/each}}
+            ]
+          }
+        ]
+      }
+
+      const chart = new frappe.Chart("#chart", {
+        title: "Temperature",
+        data: data,
+        type: 'line',
+        height: 250,
+      })
+    </script>
+
+
+  </div>
+
   {{> add-report}}
 </section>
 
