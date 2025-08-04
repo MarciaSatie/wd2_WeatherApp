@@ -16,7 +16,7 @@ export const dashboardController = {
     return a.title.localeCompare(b.title);
   });
 
-  // Use a simple loop instead of map+await
+ 
   const stationsInfo = [];
   for (const station of sortedStations) {
     const maxTemp = await stationDetailStore.maxTemp(station._id);
