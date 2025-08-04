@@ -13,9 +13,9 @@ export const userController = {
 
     const viewData = {
       title: "User information",
-      firstName: loggedInUser.firstName,
-      lastName: loggedInUser.lastName, 
-      email: loggedInUser.email,
+      firstName: loggedInUser.firstName?loggedInUser.firstName:"first name",
+      lastName: loggedInUser.lastName?loggedInUser.lastName:"last name", 
+      email: loggedInUser.email?loggedInUser.email:"email",
     };
     console.log("User information for:", loggedInUser);
     response.render("user-view", viewData);
@@ -26,16 +26,18 @@ export const userController = {
     const userId = loggedInUser ? loggedInUser._id : null;
 
     const updates = {
-      firstName: request.body.firstName,
-      lastName: request.body.lastName,
-      email: request.body.email,
+      firstName: request.body.firstName?request.body.firstName:loggedInUser.firstName,
+      lastName: request.body.lastName?request.body.lastName:loggedInUser.lastName,
+      email: request.body.email?request.body.email:loggedInUser.email,
       password: request.body.password,
     };
 
     const newInfo = await userStore.updateUser(userId, updates);
 
-
-    console.log(`Updating user ${userId} with new information:`, newInfo);
+    if (newInfo) {
+      console.log("User information updated successfully:", newInfo);
+      response.redirect("/user?updated=true");
+    };
   }
 };
 
