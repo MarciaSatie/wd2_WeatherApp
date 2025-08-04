@@ -136,22 +136,36 @@ export const dashboardController = {
     const myKey = "28d113c14bdcc9cd848fb2587c6c503b";
     const cityName = request.body.title||"Unknown City";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myKey}&units=metric`;
-    const result = await axios.get(url);
-    let cityLatitude = result.data.coord.lat;
-    let cityLongitude = result.data.coord.lon;
+    
+    try{
+      const result = await axios.get(url);
+    
+      let cityLatitude = result.data.coord.lat;
+      let cityLongitude = result.data.coord.lon;
 
-    const newStation = {
-      title: request.body.title,
-      latitude: cityLatitude,
-      longitude: cityLongitude,
-      userId: loggedInUser?._id,// if loggedInUser is exists, use its _id, otherwise undefined.
-    };
-    console.log(`Adding station with title: ${newStation.title} | lat: ${newStation.latitude} | long: ${newStation.longitude}`);
+      const newStation = {
+        title: request.body.title,
+        latitude: cityLatitude,
+        longitude: cityLongitude,
+        userId: loggedInUser?._id,// if loggedInUser is exists, use its _id, otherwise undefined.
+      };
+      console.log(`Adding station with title: ${newStation.title} | lat: ${newStation.latitude} | long: ${newStation.longitude}`);
 
-    await stationStore.addStation(newStation);
-    console.log("Station added successfully");
+      await stationStore.addStation(newStation);
+      console.log("Station added successfully");
 
-    response.redirect("/dashboard");
+      response.redirect("/dashboard");
+   
+    }catch (error) {
+      if (error.response && error.response.status === 404) {
+        console.log("City not found:", cityName);
+        response.redirect("/dashboard?cityNull=true");
+      } else {
+        console.error("Error fetching city data:", error.message);
+        response.status(500).send("Error fetching city data.");
+      }
+    }
+    
   },
 
   async deleteStation(request, response) {

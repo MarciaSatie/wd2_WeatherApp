@@ -30,3 +30,21 @@
   </div>
   <button class="button is-link">Add Auto Station</button>
 </form>
+
+<script>
+  const params = new URLSearchParams(window.location.search);//Reads the current URL’s query string (like ?updated=true)
+  console.log("Params:", params);
+  if (params.get("cityNull") === "true") {
+    alert("City input not found. Please check if name is correct or you can add then using teh first fields."); 
+
+    // Remove the query param from the URL without reloading the page
+    const originalUrl = window.location.origin;
+    console.log("Original URL:", originalUrl);
+    const currentPath = window.location.pathname;
+    console.log("Current Path:", currentPath);
+    const newUrl = `${originalUrl}${currentPath}`; // Construct the new URL without query params
+    console.log("New URL:", newUrl);
+    window.history.replaceState({}, document.title, newUrl);  
+  }
+
+</script>
